@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int quant;
+float resultado = 0, nota, peso;
 int main(){
 
     // 1. Implemente um programa de calculadora que ofereça as seguintes opções:
@@ -15,59 +17,47 @@ int main(){
 
     int programa = 1, cont = 1;
     int opcao;
-    int quant;
-    char decisao;
-    double soma, sub, mult, div, peso[quant], nota[quant], mp, a, b;
+    float soma, sub, mult, div, mp, a, b;
 
     printf("Selecione uma das opções para fazer o cálculo: \n");
+    printf("1 - Adição.\n2 - Subtração.\n3 - Multiplicação.\n4 - Divisão.\n5 - Média ponderada de notas.\n");
     scanf("%i", &opcao);
     if(opcao == 1){
         printf("Digite dois números para efetuar a soma: \n");
-        scanf("%lf%lf", &a, &b);
+        scanf("%f%f", &a, &b);
         soma = a + b;
         printf("A soma dos números %lf e %lf é: %lf", a, b, soma);
     }
     if(opcao == 2){
         printf("Digite dois números para efetuar a subtração: \n");
-        scanf("%lf%lf", &a, &b);
+        scanf("%f%f", &a, &b);
         sub = a - b;
         printf("A subtração dos números %lf e %lf é: %lf", a, b, sub);
     }
     if(opcao == 3){
         printf("Digite dois números para efetuar a divisão: \n");
-        scanf("%lf%lf", &a, &b);
+        scanf("%f%f", &a, &b);
         div = a / b;
         printf("O resultado da divisão de %lf e %lf é: %lf\n", a, b, div);
     }
     if(opcao == 4){
         printf("Digite dois números para efetuar a multiplicação: \n");
-        scanf("%lf%lf", &a, &b);
+        scanf("%f%f", &a, &b);
         mult = a * b;
         printf("O resultado da multiplicação entre %lf e %lf é: %lf\n", a, b, mult);
     }
     if(opcao == 5){
-        
-        while(programa = 1){
-            for(int i = 0; i < quant; i++){
-                
-                printf("\nDigite a nota: \n");
-                scanf("%lf", &nota[i]);
-                printf("Digite o peso: \n");
-                scanf("%lf", &peso[i]);
-                printf("Deseja adicionar mais notas? (S ou N)\n");
-                scanf("%c", &decisao);
-                if(decisao == 's'){
-                    programa = 1;
-                } else {
-                    !programa;
-                }
-
-                printf("A soma das notas foi: ");
-                double resultado = resultado + (peso[i] * nota[i]);
-                printf("%lf", resultado);
-            }
+        printf("Digite a quantidade de alunos: ");
+        scanf("%i", &quant);
+        for(int i = 0; i < quant; i++){
+            printf("Digite a nota %i: \n", i + 1);
+            scanf("%f", &nota);
+            printf("Digite o peso da nota %i: \n", i + 1);
+            scanf("%f", &peso);
+            nota = nota * peso;
+            resultado = resultado + nota;
         }
-        
+        printf("A nota final de todos os alunos foi de: %.2f\n", resultado);
     }
 
 }
