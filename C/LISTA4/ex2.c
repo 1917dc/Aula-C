@@ -30,9 +30,9 @@ int verificacao(){
             num++;
         }
     }
-    if(mai > 0, min > 0, num > 0){
-        printf("A sua senha é válida!");
+    if(mai > 0 && min > 0 && num > 0){
+        printf("A sua senha é válida!\n");
     } else {
-        printf("A sua senha é inválida!");
+        printf("A sua senha é inválida!\n");
     }
 }
