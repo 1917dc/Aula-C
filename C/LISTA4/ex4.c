@@ -1,73 +1,61 @@
-/*
-lista de compras:
-- exibir itens
-exibe os itens da lista com o indice respectivamente
-- adicionar itens
-permite criar um novo item e adicionar esse item na lista
-com um limite de 10 itens, caso esteja cheia avise
-- remover itens
-permite remover itens a partir do indice da lista, entre 1 e a quantidade de itens da lista
-caso o item seja invalido exiba uma mensagem de erro
-- sair
+// ex 4 tentativa.
 
 
-*/
 
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
-
-int opcoes();
 
 int main(){
-    char lista[10][100];
-    int programa = 1;
-    char opcao;
-    int item;
-
     
-    printf ("Qual opção deseja selecionar?\n");
-    printf ("a - exibir carrinho.\n");
-    printf ("b - adicionar item.\n");
-    printf ("c - remover item.\n");
-    printf ("d - sair.\n");
-    scanf("%c", &opcao);
-
-    while (programa == 1){
-        if (opcao == 'a'){
-            
-
-        }
-        if (opcao == 'b'){
-            for (int i = 0; i < 10; i++){
-                printf("\n%i - %s", i + 1, lista[i]);
-            }
-            printf("\nDigite o índice do item no qual deseja adicionar: ");
-            scanf("%i", &item);
-            item = item - 1;
-            while (getchar() != '\n');
-            printf("\nDigite o nome do item %i: ", item + 1);
-            fgets(lista[item], sizeof(lista[item]), stdin);
-            printf("O item %s foi adicionado na lista!\n", lista[item]);
-            for (int i = 0; i < 10; i++){
-                printf("\n%i - %s", i + 1, lista[i]);
-            }
-        }
-
-    }    
-
-}
-
-int opcoes(){
+    char lista[10][20] = {
+        {'\0'},{'\0'},{'\0'},{'\0'},{'\0'},
+        {'\0'},{'\0'},{'\0'},{'\0'},{'\0'}
+        };
     char opcao;
+    int pos;
+    char item[10];
+    int programa = 1;
 
-    printf ("Qual opção deseja selecionar?\n");
-    printf ("a - exibir carrinho.\n");
-    printf ("b - adicionar item.\n");
-    printf ("c - remover item.\n");
-    printf ("d - sair.\n");
-    scanf("%c", &opcao);
+    // escolha de opções
 
-    return opcao;
+    while(programa == 1){
+        printf("Digite a opção que deseja: \n");
+        printf("a - ver itens\n");
+        printf("b - adicionar/substituir itens.\n");
+        printf("c - remover itens.\n");
+        printf("d - sair.\n");
 
+        scanf("%c", &opcao);
+        if(opcao == 'a'){
+            printf("A sua lista atual é: \n");
+            for(int i=0; i < 10; i++){
+                printf("%i - %s", i+1, lista[i]);
+            }
+            printf("\n");
+            
+        }
+        if(opcao == 'b'){
+            printf("Digite índice do objeto no qual deseja adicionar/substituir: ");
+            scanf("%i", &pos);
+            printf("Digite o nome do objeto no qual deseja adicionar/substituir: ");
+            while(getchar() != '\n');
+            fgets(item, 10, stdin);
+            strcpy(lista[pos - 1], item);
+            for(int i = 0; i < 10; i++)
+                printf("%i - %s", i + 1, lista[i]);
+            printf("\n");
+        }
+        if(opcao == 'c'){
+            printf("Digite o indice do item no qual deseja remover: ");
+            for(int i = 0; i < 10; i++)
+                printf("%i - %s", i + 1, lista[i]);
+            scanf("%i", &pos);
+            for(int i = pos - 1; i < 10; i++)
+                strcpy(lista[i], lista[i + 1]);
+            printf("\n");
+        }
+        if(opcao == 'd'){
+            programa = 0;
+        }
+    }
 }
