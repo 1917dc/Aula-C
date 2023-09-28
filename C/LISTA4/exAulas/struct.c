@@ -12,6 +12,25 @@ As informações de cada aluno são:
 - Notas(quantas o usuário quiser informar);
 */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void limpaBuffer();
 
 int main(){
@@ -64,12 +83,9 @@ int main(){
                 } else {
                     printf("Aluno não encontrado! ");
                 }
-                printf("\nPressione ENTER");
+                printf("Pressione ENTER");
                 getchar();
             }
-        }
-        if(opcao == 3){
-
         }
     }
 }
@@ -77,3 +93,8 @@ int main(){
 void limpaBuffer(){
     while(getchar() != '\n');
 }
+
+
+
+
+
