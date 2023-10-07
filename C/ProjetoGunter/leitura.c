@@ -5,7 +5,6 @@
 int main(int argc, char *argv[]){
     char *buffer;
     int t = 0;
-    char c;
 
     FILE *arquivo = fopen("vendas.csv", "r");
 
@@ -14,16 +13,13 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
+    buffer = malloc(sizeof(char));
+
     while(!feof(arquivo)){
-        c = fgetc(arquivo);
+        *(buffer + t) = fgetc(arquivo);
         t++;
+        buffer = realloc(buffer, sizeof(char) * (t + 1));
     }
-    
-    fseek(arquivo, 0, SEEK_SET);
-
-    buffer = malloc(t * sizeof(char));
-
-    fread(buffer, sizeof(char), t, arquivo);
     printf("%s", buffer);
     
     return 0;
