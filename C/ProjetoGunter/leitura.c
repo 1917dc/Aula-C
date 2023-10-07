@@ -5,8 +5,9 @@
 int main(int argc, char *argv[]){
     char *buffer;
     int t = 0;
+    int i = 0;
 
-    FILE *arquivo = fopen("vendas.csv", "r");
+    FILE *arquivo = fopen(argv[i], "r");
 
     if(arquivo == NULL){
         printf("Erro ao abrir arquivo.\n");

@@ -3,12 +3,12 @@
 #include <string.h>
 
 typedef struct{
-    int id;
-    int idEq;
-    int idVenda;
+    char id[100];
+    int *idEq;
+    int *idVenda;
     char *nome;
     char *cargo;
-    float valVenda;
+    float *valVenda;
 }pessoa;
 
 int main(){
@@ -23,6 +23,53 @@ int main(){
         strcat(lido, linha);
     }
     printf("%s", lido);
+
+    char *token;
+    char comma[] = ",";
+    int x = 0;
+    int y = 0;
+
+    printf("\n");
+
+    //while(token != NULL){
+    for(y = 0; y < 12; y++){
+        if(x == 0){
+            token = strtok(lido, comma);
+            x++;
+            printf("%s\n", token);
+        }
+        if(x == 1){
+            token = strtok(NULL, comma);
+            x++;
+            printf("%s\n", token);
+        }
+        if(x == 2){
+            token = strtok(NULL, comma);
+            x++;
+            printf("%s\n", token);
+        }
+        if(x == 3){
+            token = strtok(NULL, comma);
+            x++;
+            printf("%s\n", token);
+        }
+        if(x == 4){
+            token = strtok(NULL, comma);
+            x++;
+            printf("%s\n", token);
+        }
+        if(x == 5){
+            token = strtok(NULL, comma);
+            atof(token);
+            x++;
+            y++;
+            printf("%s\n", token);
+        }
+    }
+
+   // }
+
+
 
     return 0;
 }
