@@ -8,7 +8,7 @@ typedef struct{
     char *idVenda;
     char *nome;
     char *cargo;
-    float valVenda;
+    double valVenda;
 }pessoa;
 
 int main(){
@@ -23,11 +23,43 @@ int main(){
 //para aramzenar a quantidade de pessoas e separar os dados
     int i = 0;
     while((fgets(linha, sizeof(linha), stdin)) != NULL){
-        t += strlen(linha);
-        lido = realloc(lido, sizeof(char) * (t + 1));
-        strcat(lido, linha);
+        //sorting de dados
+
+        dados = realloc(dados, sizeof(pessoa) * (i + 1));
+        char *token = strtok(linha, comma);
+        if(token != NULL){
+            dados[i].id = realloc(dados[i].id, sizeof(token));
+            strcpy(dados[i].id, token);
+        }
+        token = strtok(NULL, comma);
+        if(token != NULL){
+            dados[i].nome = realloc(dados[i].nome, sizeof(token));
+            strcpy(dados[i].nome, token);
+        }
+        token = strtok(NULL, comma);
+        if(token != NULL){
+            dados[i].cargo = realloc(dados[i].cargo, sizeof(token));
+            strcpy(dados[i].cargo, token);
+        }
+        token = strtok(NULL, comma);
+        if(token != NULL){
+            dados[i].idEq = realloc(dados[i].idEq, sizeof(token));
+            strcpy(dados[i].idEq, token);
+        }
+        token = strtok(NULL, comma);
+        if(token != NULL){
+            dados[i].idVenda = realloc(dados[i].idVenda, sizeof(token));
+            strcpy(dados[i].idVenda, token);
+        }
+        token = strtok(NULL, comma);
+        if(token != NULL){
+            dados[i].valVenda = atof(token);
+        }
+        i++;
     }
-    printf("%s", lido);
+    for(int j = 0; j < i; j++){
+        printf("%s\n", dados[j].nome);
+    }
 
     return 0;
 }
