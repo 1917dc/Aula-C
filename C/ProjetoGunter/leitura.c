@@ -6,7 +6,7 @@ int main(int argc, char *argv[]){
     char *buffer;
     int t = 0;
 
-    FILE *arquivo = fopen("vendas.csv", "r");
+    FILE *arquivo = fopen(argv[1], "r");
 
     if(arquivo == NULL){
         printf("Erro ao abrir arquivo.\n");
@@ -20,6 +20,7 @@ int main(int argc, char *argv[]){
         t++;
         buffer = realloc(buffer, sizeof(char) * (t + 1));
     }
+    buffer[t - 1] = '\0';
     printf("%s", buffer);
     
     return 0;
